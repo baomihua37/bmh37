@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-10</title>
+</head>
+
+<body>
+
+    <div id="box" style="width: 900px;height: 700px;"></div>
+    <script src="echarts.js"></script>
+    <script>
+        var myChart = echarts.init(document.getElementById("box"));
+        var color = {
+            color: ["red", "grren", "blue", "#8cc7b5", "#32cd32", "#7cfc00", "#e9caad", "grey"]
+        }
+        var option = {
+            title: {
+                text: '多漏斗图和多金字塔',
+                left: 280,
+                top: 'top'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c}%'
+            },
+            toolbox: {
+                left: 850,
+                orient: 'vertical',
+                top: 'center',
+                feature: {
+                    dataView: { readOnly: false },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['展现', '点击', '访问', '咨询', '订单']
+            },
+            series: [
+                {
+                    name: '漏斗图',
+                    type: 'funnel',
+                    width: '40%',
+                    height: '45%',
+                    left: '5%',
+                    top: '50%',
+                    data: [
+                        { value: 60, name: '访问' },
+                        { value: 30, name: '咨询' },
+                        { value: 10, name: '订单' },
+                        { value: 80, name: '点击' },
+                        { value: 100, name: '展现' }
+                    ]
+                },
+                {
+                    name: '金字塔',
+                    type: 'funnel',
+                    width: '40%',
+                    height: '45%',
+                    left: '5%',
+                    top: '5%',
+                    sort: 'ascending',
+                    data: [
+                        { value: 45, name: '访问' },
+                        { value: 15, name: '咨询' },
+                        { value: 5, name: '订单' },
+                        { value: 65, name: '点击' },
+                        { value: 100, name: '展现' }
+                    ]
+                },
+                {
+                    name: '漏斗图',
+                    type: 'funnel',
+                    width: '40%',
+                    height: '45%',
+                    left: '55%',
+                    top: '5%',
+                    label: {
+                        normal: { position: 'left' }
+                    },
+                    data: [
+                        { value: 60, name: '访问' },
+                        { value: 30, name: '咨询' },
+                        { value: 10, name: '订单' },
+                        { value: 80, name: '点击' },
+                        { value: 100, name: '展现' }
+                    ]
+                },
+                {
+                    name: '金字塔',
+                    type: 'funnel',
+                    width: '40%',
+                    height: '45%',
+                    left: '55%',
+                    top: '50%',
+                    sort: 'ascending',
+                    label: {
+                        normal: { position: 'left' }
+                    },
+                    data: [
+                        { value: 45, name: '访问' },
+                        { value: 15, name: '咨询' },
+                        { value: 5, name: '订单' },
+                        { value: 65, name: '点击' },
+                        { value: 100, name: '展现' }
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+
+</body>
+
+</html>
